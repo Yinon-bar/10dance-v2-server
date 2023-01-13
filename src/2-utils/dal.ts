@@ -8,6 +8,13 @@ const dummyAttendees = JSON.stringify([
     national_id: "200454552",
     arrived: false,
   },
+  {
+    id: "894gh5ft737",
+    first_name: "Yinon",
+    last_name: "Bar",
+    national_id: "200454555",
+    arrived: false,
+  },
 ]);
 
 export async function getAllAttendees(): Promise<AttendeeModel[]> {

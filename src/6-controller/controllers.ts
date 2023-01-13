@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { getAllAttendees } from "../5-logic/attendeesLogic";
+import { getAllAttendees, attendeeCheckIn } from "../5-logic/attendeesLogic";
 
 export const getAllAttendeesCtrl = async (
   request: Request,
@@ -13,3 +13,14 @@ export const getAllAttendeesCtrl = async (
     next(error);
   }
 };
+
+export const attendeeCheckInCtrl = async (
+  request: Request, response: Response, next: NextFunction) => {
+    try {
+      const { national_id } = request.params;
+      const attendeeCheckedIn = await attendeeCheckIn(national_id);
+      response.status(200);
+    } catch (error) {
+      next(error);
+    }
+  }

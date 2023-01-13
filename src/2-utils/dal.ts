@@ -15,6 +15,8 @@ export async function getAllAttendees(): Promise<AttendeeModel[]> {
   return attendees;
 }
 
-// body: first_name: string, last_name, national_id, arrived: boolean}
+export async function setAttendeeArrived(national_id: string): Promise<boolean> {
+  return true;
+}
 
-export default { getAllAttendees };
+export default { getAllAttendees, setAttendeeArrived };

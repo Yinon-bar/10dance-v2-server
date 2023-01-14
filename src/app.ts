@@ -16,6 +16,7 @@ mongoose.set('strictQuery', false);
 mongoose.connect(
   `mongodb+srv://${DB_USER}:${DB_PASS}@${DB_HOST}/${DB_NAME}?retryWrites=true&w=majority`,
   async (err) => {
+    console.log("yes, yes it is!")
     if(err){console.log(err)}else { app.listen(process.env.PORT); console.log("Connected to DB and listening to port ",process.env.PORT)}  
   }
 );

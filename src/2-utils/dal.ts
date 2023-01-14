@@ -23,6 +23,10 @@ async function getAllAttendees(): Promise<AttendeeModel[]> {
   return attendees;
 }
 
+export async function setAttendeeArrived(national_id: string): Promise<boolean> {
+  return true;
+}
+
 // add attendee
 async function addNewAttendee(attendee: AttendeeModel): Promise<AttendeeModel> {
   const newattendee = JSON.parse(dummyAttendees[0]);
@@ -34,4 +38,5 @@ async function addNewAttendee(attendee: AttendeeModel): Promise<AttendeeModel> {
 export default {
   getAllAttendees,
   addNewAttendee,
+  setAttendeeArrived,
 };

@@ -1,9 +1,10 @@
 import { Router } from "express";
-import { getAllAttendeesCtrl } from "./controllers";
+import { addAttendeeCtrl, getAllAttendeesCtrl } from "./controllers";
 
 const router = Router();
 
 router.get("/attendee", getAllAttendeesCtrl);
+router.post("/attendee/add", addAttendeeCtrl);
 
 export default router;
 

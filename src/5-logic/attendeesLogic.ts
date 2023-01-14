@@ -1,7 +1,7 @@
-import AttendeeModel from "../4-models/AttendeeModel";
 import dal from "../2-utils/dal";
+import { Attendee } from "../interfaces/attendee";
 
-export async function getAllAttendees(): Promise<AttendeeModel[]> {
+export async function getAllAttendees(): Promise<Attendee[]> {
   const attendees = await dal.getAllAttendees();
   return attendees;
 }
@@ -14,8 +14,8 @@ export async function attendeeCheckIn(national_id: string): Promise<boolean> {
 
 // POST one attendee:
 export async function addSingleAttendee(
-  attendee: AttendeeModel
-): Promise<AttendeeModel> {
+  attendee: Attendee
+): Promise<Attendee> {
   const newAttendee = await dal.addNewAttendee(attendee);
   return newAttendee;
 }

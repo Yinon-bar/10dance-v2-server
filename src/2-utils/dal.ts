@@ -1,4 +1,4 @@
-import AttendeeModel from "../4-models/AttendeeModel";
+import { Attendee } from "../interfaces/attendee";
 
 const dummyAttendees = JSON.stringify([
   {
@@ -18,7 +18,7 @@ const dummyAttendees = JSON.stringify([
 ]);
 
 // get all attendee
-async function getAllAttendees(): Promise<AttendeeModel[]> {
+async function getAllAttendees(): Promise<Attendee[]> {
   const attendees = JSON.parse(dummyAttendees);
   return attendees;
 }
@@ -28,7 +28,7 @@ export async function setAttendeeArrived(national_id: string): Promise<boolean> 
 }
 
 // add attendee
-async function addNewAttendee(attendee: AttendeeModel): Promise<AttendeeModel> {
+async function addNewAttendee(attendee: Attendee): Promise<Attendee> {
   const newattendee = JSON.parse(dummyAttendees[0]);
   return newattendee;
 }

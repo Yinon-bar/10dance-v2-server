@@ -2,6 +2,7 @@ import { NextFunction, Request, Response } from "express";
 import { AttendeeModel, validateAttendee } from "../4-models/AttendeeModel";
 import { getAllAttendees, attendeeCheckIn } from "../5-logic/attendeesLogic";
 import { HttpError } from "../4-models/error-handling";
+import dal from "../2-utils/dal"
 
 // GET all attendee
 export const getAllAttendeesCtrl = async (
@@ -55,8 +56,8 @@ export const addAttendeeCtrl = async (
       return next(new HttpError(isAttendeeValid.error.message, 400));
     }
 
-    const newAttendee = new AttendeeModel(receivedFields);
-    await newAttendee.save();
+    const newAttendee = await dal.addNewAttendee(receivedFields);
+    
     response.json({ newAttendee: newAttendee.toObject({ getters: true }) })
   } catch (error) {
     next(error);

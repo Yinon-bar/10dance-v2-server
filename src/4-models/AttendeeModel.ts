@@ -1,17 +1,24 @@
-class AttendeeModel {
-  public id: string;
-  public first_name: string;
-  public last_name: string;
-  public national_id: string;
-  public arrived: boolean;
+import Joi from "joi";
+import mongoose from "mongoose";
+import type { Attendee } from "../interfaces/attendee";
 
-  public constructor(attendee: AttendeeModel) {
-    this.id = attendee.id;
-    this.first_name = attendee.first_name;
-    this.last_name = attendee.last_name;
-    this.national_id = attendee.national_id;
-    this.arrived = attendee.arrived;
-  }
-}
+const attendeeSchema = new mongoose.Schema<Attendee>({
+  first_name: String,
+  last_name: String,
+  national_id: String,
+  arrived: Boolean,
+});
 
-export default AttendeeModel;
+export const AttendeeModel = mongoose.model("Attendee", attendeeSchema);
+
+export const validateAttendee = (attendee: Attendee) => {
+  const joiSchema = Joi.object({
+    id: Joi.string(),
+    first_name: Joi.string(),
+    last_name: Joi.string(),
+    national_id: Joi.string().length(9),
+    arrived: Joi.boolean(),
+  });
+
+  return joiSchema.validate(attendee);
+};
